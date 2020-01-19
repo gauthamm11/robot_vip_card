@@ -80,7 +80,7 @@
          <div class="input-group-prepend">
             <button class="btn spec" style="background-color: #ffd700; border-radius: 50px 0px 0px 50px;" type="button"><strong><i class="fas fa-credit-card"></i> Card No.</strong></button> 
         </div>
-        <input type="text" id="search" placeholder="xxxx xxxx xxxx" class="form-control spec form-control-lg text-monospace" autofocus autocomplete="off" spellcheck="false"/>
+        <input type="text" id="search" placeholder="xxxx xxxx xxxx" class="form-control spec form-control-lg text-monospace" autofocus autocomplete="off" spellcheck="false" value="5373 4589 0001" />
         <div class="input-group-append">
             <button class="btn spec" style="background-color: #ffd700; border-radius: 0px 50px 50px 0px;" id="subm" type="submit"><strong> <i class="fab fa-searchengin" style="font-size: 20px;"></i>&nbsp;Search</strong></button> 
         </div>
@@ -95,8 +95,8 @@
 </div>
 <!-- ./side nav -->
 <!-- main content start -->
-<div class="container mb-3 text-capitalize" id="result">
-
+<div class="container mb-3">
+  <div id="result"></div>
 </div>
 <!-- main content finish -->
 <script>

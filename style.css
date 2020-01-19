@@ -16,6 +16,10 @@
 }
 
 
+.brd{
+  border-radius: 50px;
+}
+
 .sidenav {
   height: 100%;
   width: 0;
