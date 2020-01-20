@@ -32,7 +32,7 @@
       <script>
          $(document).ready(function () {
             var space = '<br><div class="alert text-center alert-dark alert-dismissible fade show col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 mx-auto"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Enter ROBOT VIP Card No.!</strong><br><i>Example:</i> 1234 5678 9012</div>';
-            var lodSpin = '<center class="mt-5"><div class="spinner-grow text-muted mr-sm-5"></div><div class="spinner-grow text-primary mr-sm-5"></div><div class="spinner-grow text-success mr-sm-5"></div><div class="spinner-grow text-info mr-sm-5"></div><div class="spinner-grow text-warning mr-sm-5"></div><div class="spinner-grow text-danger mr-sm-5"></div><div class="spinner-grow text-secondary mr-sm-5"></div><div class="spinner-grow text-dark"></div></center>';
+           var lodSpin = '<center class="mt-3 mb-3"><div class="spinner-grow text-muted mr-sm-5"></div><div class="spinner-grow text-primary mr-sm-5"></div><div class="spinner-grow text-success mr-sm-5"></div><div class="spinner-grow text-info mr-sm-5"></div><div class="spinner-grow text-warning mr-sm-5"></div></center>';
     	// view details open
     	//$(".viewc").click(function () {
     	//$("#view").modal();

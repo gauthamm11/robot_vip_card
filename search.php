@@ -1,19 +1,99 @@
-<?php
-require "conn.php";
-if (!isset($_GET['search'])) {
+	<?php
+	require "conn.php";
+	if (!isset($_GET['search'])) {
 	header("location: index.php");
-}
-?>
+	}
+	?>
 
-<?php
+	<script>
+	$(document).ready(function () {
 
-$card = $_GET['search'];
+		var lodSpin = '<center class="mt-3 mb-3"><div class="spinner-grow text-muted mr-sm-5"></div><div class="spinner-grow text-primary mr-sm-5"></div><div class="spinner-grow text-success mr-sm-5"></div><div class="spinner-grow text-info mr-sm-5"></div><div class="spinner-grow text-warning mr-sm-5"></div></center>';
 
-$sql = "SELECT * FROM robot_vip_spine where vip_card_no = '$card'";
-$result = mysqli_query($conn, $sql);
+	// 		$(".viewc").click(function () {
+	// 			var pid = $(this).attr('data-value1');
+	// 			var title = $(this).attr('data-value2');
+	// 			$("#view").modal();
+	// 			$('#conthead').html('<i class="fas fa-building fa-fw text-info"></i>&nbsp;<span class="text-info">' + title + '</span>');
+	// 			$('#viewbody').html(lodSpin);
+	// // ajax open
+	// $.ajax({
+	// 	type: "GET",
+	// 	url: 'details.php',
+	// 	data: { pid: pid },
+	// 	success: function (data) {
+	// 		$('#conthead').html('<i class="fas fa-building fa-fw text-info"></i>&nbsp;<span class="text-info">' + title + '</span>');
+	// 		$("#viewbody").html(data);
+	//    // $("#viewbody").html(pid);
+	// }
+	// });
+	// // ajax close
+	// });
 
-if (mysqli_num_rows($result) > 0) {
-    // output data of each row
+
+	// form submit open
+	$('#adsub').on('submit', function (e) {
+	            //Stop the form from submitting itself to the server.
+	            e.preventDefault();
+	            var add = $('#adamt').val();
+	            var trimAdd = $.trim(add);
+	            $("#modBA").html(lodSpin);
+	            // ajax open
+	$.ajax({
+	type: "GET",
+	url: 'addm.php',
+	data: { trimAdd: trimAdd },
+	success: function (data) {
+		
+		$("#modBA").html(data);
+	// $("#viewbody").html(pid);
+	}
+	});
+	// ajax close
+	});
+	// form submit close
+
+	// form submit open
+	$('#usub').on('submit', function (e) {
+	            //Stop the form from submitting itself to the server.
+	            e.preventDefault();
+	            var id = $('#abid').val();
+	            var bamt = $('#abill').val();
+	            var camt = $('#acard').val();
+	            var tBmt = $.trim(bamt);
+	            var tCmt = $.trim(camt);
+	            $("#modBM").html(lodSpin);
+	            // ajax open
+	$.ajax({
+	type: "GET",
+	url: 'minm.php',
+	data: { id: id, bmt: tBmt, cmt: tCmt },
+	success: function (data) {
+		
+		$("#modBM").html(data);
+	// $("#viewbody").html(pid);
+	}
+	});
+	// ajax close
+	});
+	// form submit close
+
+	return false;
+	});
+	</script>
+
+
+
+
+	<?php
+
+	$card = $_GET['search'];
+
+	$sql = "SELECT * FROM robot_vip_spine where vip_card_no = '$card'";
+	$result = mysqli_query($conn, $sql);
+
+	if (mysqli_num_rows($result) > 0) {
+	// output data of each row
 	while($row = mysqli_fetch_assoc($result)) {
 
 		echo '
@@ -54,7 +134,7 @@ if (mysqli_num_rows($result) > 0) {
 	<div class="modal fade" id="myAdd" data-backdrop="static">
 	<div class="modal-dialog modal-dialog-centered">
 	<div class="modal-content">
-	<form>
+	<form id="adsub">
 	<!-- Modal Header -->
 	<div class="modal-header">
 	<h4 class="modal-title">Add Amount</h4>
@@ -63,21 +143,23 @@ if (mysqli_num_rows($result) > 0) {
 
 	<!-- Modal body -->
 	<div class="modal-body">
+	<div id="modBA">
 	<div class="input-group mb-3">
 	<div class="input-group-prepend">
 	<span class="input-group-text">Amount:</span>
 	</div>
-	<input type="text" class="form-control" id="adamt" required>
+	<input type="number" class="form-control" id="adamt" required>
 	</div>
 	</div>
-
+	</div>
 	<!-- Modal footer -->
 	<div class="modal-footer">
-	<button type="submit" class="btn btn-success brd px-5" id="adsub"><i class="fas fa-plus-square"></i>&nbsp;<span class="font-weight-bold">Add</span></button>
+	<button type="submit" class="btn btn-success brd px-5"><i class="fas fa-plus-square"></i>&nbsp;<span class="font-weight-bold">Add</span></button>
 	</div>
 	</form>
 	</div>
 	</div>
+
 	</div>
 	';
 	echo '
@@ -85,7 +167,7 @@ if (mysqli_num_rows($result) > 0) {
 	<div class="modal fade" id="myMin" data-backdrop="static">
 	<div class="modal-dialog modal-dialog-centered">
 	<div class="modal-content">
-	<form>
+	<form id="usub">
 	<!-- Modal Header -->
 	<div class="modal-header">
 	<h4 class="modal-title">VIP Swipe</h4>
@@ -94,6 +176,7 @@ if (mysqli_num_rows($result) > 0) {
 
 	<!-- Modal body -->
 	<div class="modal-body">
+	<div id="modBM">
 	<div class="input-group mb-3">
 	<div class="input-group-prepend">
 	<span class="input-group-text">Bill ID:</span>
@@ -105,14 +188,15 @@ if (mysqli_num_rows($result) > 0) {
 	<div class="input-group-prepend">
 	<span class="input-group-text">Bill Amount:</span>
 	</div>
-	<input type="text" class="form-control" id="abill" required>
+	<input type="number" class="form-control" id="abill" required>
 	</div>
 
 	<div class="input-group mb-3">
 	<div class="input-group-prepend">
 	<span class="input-group-text">Card Amount:</span>
 	</div>
-	<input type="text" class="form-control" id="acard" required>
+	<input type="number" class="form-control" id="acard" required>
+	</div>
 	</div>
 	</div>
 
@@ -152,9 +236,9 @@ if (mysqli_num_rows($result) > 0) {
 	</div>
 	';
 
-} else {
+	} else {
 	echo "<div class='bg-white'>No Entry Dude!</div>";
-}
+	}
 
 
 
@@ -162,4 +246,4 @@ if (mysqli_num_rows($result) > 0) {
 
 
 
-?>
+	?>
