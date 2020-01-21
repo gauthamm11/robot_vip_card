@@ -1,34 +1,14 @@
 	<?php
 	require "conn.php";
 	if (!isset($_GET['search'])) {
-	header("location: index.php");
+		header("location: index.php");
 	}
 	?>
 
 	<script>
-	$(document).ready(function () {
+		$(document).ready(function () {
 
-		var lodSpin = '<center class="mt-3 mb-3"><div class="spinner-grow text-muted mr-sm-5"></div><div class="spinner-grow text-primary mr-sm-5"></div><div class="spinner-grow text-success mr-sm-5"></div><div class="spinner-grow text-info mr-sm-5"></div><div class="spinner-grow text-warning mr-sm-5"></div></center>';
-
-	// 		$(".viewc").click(function () {
-	// 			var pid = $(this).attr('data-value1');
-	// 			var title = $(this).attr('data-value2');
-	// 			$("#view").modal();
-	// 			$('#conthead').html('<i class="fas fa-building fa-fw text-info"></i>&nbsp;<span class="text-info">' + title + '</span>');
-	// 			$('#viewbody').html(lodSpin);
-	// // ajax open
-	// $.ajax({
-	// 	type: "GET",
-	// 	url: 'details.php',
-	// 	data: { pid: pid },
-	// 	success: function (data) {
-	// 		$('#conthead').html('<i class="fas fa-building fa-fw text-info"></i>&nbsp;<span class="text-info">' + title + '</span>');
-	// 		$("#viewbody").html(data);
-	//    // $("#viewbody").html(pid);
-	// }
-	// });
-	// // ajax close
-	// });
+			var lodSpin = '<center class="mt-3 mb-3"><div class="spinner-grow text-muted mr-sm-5"></div><div class="spinner-grow text-primary mr-sm-5"></div><div class="spinner-grow text-success mr-sm-5"></div><div class="spinner-grow text-info mr-sm-5"></div><div class="spinner-grow text-warning mr-sm-5"></div></center>';
 
 
 	// form submit open
@@ -39,13 +19,13 @@
 	            var trimAdd = $.trim(add);
 	            $("#modBA").html(lodSpin);
 	            // ajax open
-	$.ajax({
-	type: "GET",
-	url: 'addm.php',
-	data: { trimAdd: trimAdd },
-	success: function (data) {
-		
-		$("#modBA").html(data);
+	            $.ajax({
+	            	type: "GET",
+	            	url: 'addm.php',
+	            	data: { trimAdd: trimAdd },
+	            	success: function (data) {
+
+	            		$("#modBA").html(data);
 	// $("#viewbody").html(pid);
 	}
 	});
@@ -53,7 +33,7 @@
 	});
 	// form submit close
 
-	// form submit open
+	// form use open
 	$('#usub').on('submit', function (e) {
 	            //Stop the form from submitting itself to the server.
 	            e.preventDefault();
@@ -64,19 +44,37 @@
 	            var tCmt = $.trim(camt);
 	            $("#modBM").html(lodSpin);
 	            // ajax open
-	$.ajax({
-	type: "GET",
-	url: 'minm.php',
-	data: { id: id, bmt: tBmt, cmt: tCmt },
-	success: function (data) {
-		
-		$("#modBM").html(data);
+	            $.ajax({
+	            	type: "GET",
+	            	url: 'minm.php',
+	            	data: { id: id, bmt: tBmt, cmt: tCmt },
+	            	success: function (data) {
+
+	            		$("#modBM").html(data);
 	// $("#viewbody").html(pid);
 	}
 	});
 	// ajax close
 	});
-	// form submit close
+	// form use close
+
+	$("#traHis").click(function () {
+		var tid = $(this).attr('data-attr');
+				//$("#view").modal();
+				//$('#trHd').html('<i class="fas fa-history"></i>&nbsp;&nbsp;<span>' + tid + '</span>');
+				$('#trHd').html('<i class="fas fa-history"></i>&nbsp;<span>Transaction History</span>');
+				$('#trBd').html(lodSpin);
+	// ajax open
+	$.ajax({
+		type: "GET",
+		url: 'history.php',
+		data: { tid: tid },
+		success: function (data) {
+			$("#trBd").html(data);
+		}
+	});
+	// ajax close
+	});
 
 	return false;
 	});
@@ -102,8 +100,8 @@
 		<div class="card-body">
 		<!-- card body starts -->
 		<div class="pb-3 clearfix">
-		<span class="float-left"><kbd><i class="fas fa-credit-card"></i>&nbsp;&nbsp;<i>'.$row['vip_card_no'].'</i></kbd></span>
-		<span class="float-right"><a href="#!" data-toggle="modal" data-target="#myHis">Full Transaction History</a></span>
+		<span class="float-left"><kbd><i class="fas fa-credit-card text-warning"></i>&nbsp;&nbsp;<i>'.$row['vip_card_no'].'</i></kbd></span>
+		<span class="float-right"><u><a href="#!" data-toggle="modal" id="traHis" data-attr="'.$row['vip_card_no'].'" data-target="#myHis">Full Transaction History</a></u></span>
 		</div>
 		<div class="d-flex justify-content-between py-2">
 		<div class="text-left"><h3><i class="fas fa-user-circle py-2"></i>&nbsp;'.$row['name'].'</h3></div>
@@ -217,13 +215,14 @@
 
 	<!-- Modal Header -->
 	<div class="modal-header">
-	<h4 class="modal-title">Transaction History</h4>
+	<h4 class="modal-title" id="trHd">Transaction History</h4>
 	<button type="button" class="close" data-dismiss="modal">&times;</button>
 	</div>
 
 	<!-- Modal body -->
 	<div class="modal-body">
-	Transaction body..
+	<div id="trBd">
+	</div>
 	</div>
 
 	<!-- Modal footer -->

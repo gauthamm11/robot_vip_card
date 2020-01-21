@@ -39,20 +39,20 @@ require "conn.php";
 		<!-- ./side nav -->
 		<!-- main content start -->
 		<div class="container">
-			<h2 class="text-center mt-4 pb-3"><span class="badge badge-primary">Add Member&nbsp;<i class="fas fa-user-plus"></i></span></h2>
-			<form class="container">
+			<h2 class="text-center mt-4 pb-3"><span class="badge badge-warning brd px-4"><i class="fas fa-user-plus"></i>&nbsp;Add Member</span></h2>
+			<form class="container" id="form_id">
 				<div class="row mt-3">
 					<div class="col">
 						<div class="input-group">
 							<div class="input-group-prepend bg-primary">
-								<button class="btn-primary" type="button"><strong><i class="fas fa-user-alt"></i> Name</strong></button>
+								<button class="btn btn-warning" type="button"><strong><i class="fas fa-user-alt"></i> Name</strong></button>
 							</div>
 							<input type="text" class="form-control" placeholder="Ex. John, Doe" name="cname" autofocus>
 						</div></div>
 						<div class="col">
 							<div class="input-group">
 								<div class="input-group-prepend bg-primary">
-									<button class="btn-primary" type="button"><strong><i class="fas fa-phone"></i> Mobile</strong></button>
+									<button class="btn btn-warning" type="button"><strong><i class="fas fa-phone"></i> Mobile</strong></button>
 								</div>
 								<input type="text" class="form-control" placeholder="Ex. 9123456780" name="mno">
 							</div>
@@ -62,7 +62,7 @@ require "conn.php";
 						<div class="col">
 							<div class="input-group">
 								<div class="input-group-prepend">
-									<button class="btn-primary" type="button"><strong><i class="fas fa-envelope"></i> Email</strong></button> 
+									<button class="btn btn-warning" type="button"><strong><i class="fas fa-envelope"></i> Email</strong></button> 
 								</div>
 								<input type="email" class="form-control" placeholder="Ex. johndoe@example.com" name="email">
 							</div>  
@@ -70,7 +70,7 @@ require "conn.php";
 						<div class="col">
 							<div class="input-group">
 							<div class="input-group-prepend bg-primary">
-								<button class="btn-primary" type="button"><strong><i class="far fa-calendar-alt"></i> D.O.B</strong></button>
+								<button class="btn btn-warning" type="button"><strong><i class="far fa-calendar-alt"></i> D.O.B</strong></button>
 							</div>
 							<input type="date" class="form-control" placeholder="Enter D.O.B" name="dob">
 						</div>
@@ -80,7 +80,7 @@ require "conn.php";
 						<div class="col">
 							<div class="input-group">
 							<div class="input-group-prepend bg-primary">
-								<button class="btn-primary" type="button"><strong><i class="fas fa-map-marked-alt"></i> Address</strong></button>
+								<button class="btn btn-warning" type="button"><strong><i class="fas fa-map-marked-alt"></i> Address</strong></button>
 							</div>
 							<textarea placeholder="Ex. #9, SK Apartments, Mount Poonamalle Road, Porur 600116." class="form-control" rows="2" id="addr"></textarea>      
 						</div>
@@ -90,7 +90,7 @@ require "conn.php";
 						<div class="col">
 							<div class="input-group">
 								<div class="input-group-prepend">
-									<button class="btn-primary" type="button"><strong><i class="fas fa-credit-card"></i> Card No.</strong></button> 
+									<button class="btn btn-warning" type="button"><strong><i class="fas fa-credit-card"></i> Card No.</strong></button> 
 								</div>
 								<input type="text" class="form-control" placeholder="Ex. 1234 5678 9012" name="email">
 							</div>  
@@ -98,7 +98,7 @@ require "conn.php";
 						<div class="col">
 							<div class="input-group">
 							<div class="input-group-prepend bg-primary">
-								<button class="btn-primary" type="button"><strong><i class="fas fa-rupee-sign"></i> Money</strong></button>
+								<button class="btn btn-warning" type="button"><strong><i class="fas fa-rupee-sign"></i> Money</strong></button>
 							</div>
 							<input type="text" class="form-control" placeholder="Ex. 3000" name="dob">
 						</div>
@@ -108,7 +108,7 @@ require "conn.php";
 						<div class="col">
 							<div class="input-group">
 								<div class="input-group-prepend">
-									<button class="btn-primary" type="button"><strong><i class="fas fa-cubes"></i> Branch</strong></button> 
+									<button class="btn btn-warning" type="button"><strong><i class="fas fa-cubes"></i> Branch</strong></button> 
 								</div>
 								<input type="text" class="form-control" placeholder="Ex. Porur - Chennai" name="email">
 							</div>  
@@ -116,14 +116,14 @@ require "conn.php";
 						<div class="col">
 							<div class="input-group">
 							<div class="input-group-prepend bg-primary">
-								<button class="btn-primary" type="button"><strong><i class="fas fa-trophy"></i> Anniversary</strong></button>
+								<button class="btn btn-warning" type="button"><strong><i class="fas fa-trophy"></i> Anniversary</strong></button>
 							</div>
 							<input type="date" class="form-control" name="dob">
 						</div>
 						</div>
 					</div>
 					<center>
-					<button type="submit" class="btn-primary p-2 mt-5 sha"><strong>Submit <i class="fas fa-leaf"></i></strong></button>
+					<button type="submit" class="btn btn-warning p-2 mt-5 sha brd px-3" id="sub"><strong>Submit <i class="fas fa-leaf"></i></strong></button>
 					</center>
 				</form>
 			</div>
