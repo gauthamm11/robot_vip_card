@@ -210,7 +210,7 @@
 	echo '
 	<!-- The Modal -->
 	<div class="modal fade" id="myHis" data-backdrop="static">
-	<div class="modal-dialog">
+	<div class="modal-dialog modal-lg">
 	<div class="modal-content">
 
 	<!-- Modal Header -->
