@@ -17,16 +17,16 @@
 	            e.preventDefault();
 	            var add = $('#adamt').val();
 	            var trimAdd = $.trim(add);
+	            var vip = $("#traHis").attr('data-attr');
 	            $("#modBA").html(lodSpin);
+	           // alert(vip);
 	            // ajax open
 	            $.ajax({
 	            	type: "GET",
 	            	url: 'addm.php',
-	            	data: { trimAdd: trimAdd },
+	            	data: { trimAdd: trimAdd, vip: vip },
 	            	success: function (data) {
-
 	            		$("#modBA").html(data);
-	// $("#viewbody").html(pid);
 	}
 	});
 	// ajax close
@@ -125,8 +125,7 @@
 		</div>
 		';
 
-	}
-
+}
 	echo '
 	<!-- The Modal -->
 	<div class="modal fade" id="myAdd" data-backdrop="static">
@@ -147,6 +146,7 @@
 	<span class="input-group-text">Amount:</span>
 	</div>
 	<input type="number" class="form-control" id="adamt" required>
+	
 	</div>
 	</div>
 	</div>
@@ -207,6 +207,7 @@
 	</div>
 	</div>
 	';
+
 	echo '
 	<!-- The Modal -->
 	<div class="modal fade" id="myHis" data-backdrop="static">
