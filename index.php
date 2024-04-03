@@ -1,16 +1,16 @@
     	<?php
-    	require "conn.php";
+ //   	require "conn.php";
 
-        if ( !isset($_SESSION["adm"])) {
-         header('location: login.php');
-     }
+ //       if ( !isset($_SESSION["adm"])) {
+ //        header('location: login.php');
+ //    }
 
     // logout block
-     if (isset($_GET['lgout'])) {
-        session_destroy();
-        unset($_SESSION['adm']);
-        header("location: index.php");
-    }
+ //    if (isset($_GET['lgout'])) {
+  //      session_destroy();
+  //      unset($_SESSION['adm']);
+  //      header("location: index.php");
+  //  }
     ?>
 
     <!DOCTYPE html>
